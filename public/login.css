@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+ul, li, ol{
+    list-style: none;
+}
+
+h2{
+    color: red;
+    font-size: 32px;
+    font-weight: bold;
+}
