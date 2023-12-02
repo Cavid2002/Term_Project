@@ -5,10 +5,10 @@ USE Hospital;
 CREATE TABLE `Doctor` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`full_name` varchar(50) NOT NULL,
-	`phone` varchar(50) NOT NULL UNIQUE,
+	`phone` varchar(50) NOT NULL,
 	`address` varchar(100) NOT NULL,
 	`email` varchar(100) NOT NULL,
-	`password` INT(100) NOT NULL,
+	`password` varchar(100) NOT NULL,
 	`department_id` INT NOT NULL,
 	PRIMARY KEY (`id`)
 );
@@ -16,10 +16,10 @@ CREATE TABLE `Doctor` (
 CREATE TABLE `Nurse` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`full_name` varchar(50) NOT NULL,
-	`phone` varchar(50) NOT NULL UNIQUE,
+	`phone` varchar(50) NOT NULL,
 	`address` varchar(100) NOT NULL,
 	`email` varchar(100) NOT NULL,
-	`password` INT(100) NOT NULL,
+	`password` varchar(100) NOT NULL,
 	`department_id` INT NOT NULL,
 	PRIMARY KEY (`id`)
 );
@@ -36,14 +36,14 @@ CREATE TABLE `Patient` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`full_name` varchar(50) NOT NULL,
 	`gender` varchar(1) NOT NULL,
-	`blood_type` varchar(2) NOT NULL,
+	`blood_type` varchar(3) NOT NULL,
 	`height` FLOAT NOT NULL,
 	`weight` FLOAT NOT NULL,
 	`ssn` INT NOT NULL,
-	`phone` varchar(50) NOT NULL UNIQUE,
+	`phone` varchar(50) NOT NULL,
 	`address` varchar(100) NOT NULL,
 	`email` varchar(100) NOT NULL,
-	`password` INT(100) NOT NULL,
+	`password` varchar(100) NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
@@ -121,15 +121,6 @@ ALTER TABLE `Examination` ADD FOREIGN KEY (`patient_id`) REFERENCES `Patient`(`i
 ALTER TABLE `Treatment` ADD FOREIGN KEY (`nurse_id`) REFERENCES `Nurse`(`id`);
 
 ALTER TABLE `Treatment` ADD FOREIGN KEY (`patient_id`) REFERENCES `Patient`(`id`);
-
-
-
-
-
-
-
-
-
 
 
 

@@ -43,12 +43,34 @@
     <main class="container py-3">
         <h2>Personal Data</h2>
         <div>
-            <p><span class="fw-bold">Full Name:</span></p>
-            <p><span class="fw-bold">Department:</span></p>
-            <p><span class="fw-bold">Email:</span></p>
-            <p><span class="fw-bold">Phone:</span></p>
-            <p><span class="fw-bold">Address:</span></p>
-            <p><a class="btn btn-outline-warning" href="/change">Change Data</a></p>
+            <p><span class="fw-bold">Full Name:</span>{{user.full_name}}</p>
+            <p><span class="fw-bold">Department:</span>{{department.name}}</p>
+            <p><span class="fw-bold">Email:</span>{{user.email}}</p>
+            <p><span class="fw-bold">Phone:</span>{{user.phone}}</p>
+            <p><span class="fw-bold">Address:</span>{{user.address}}</p>
+        </div>
+            <h2>Examination</h2>
+            <table class="table">
+              {{#each examination}}
+              <tr>
+                <form method="post">
+                  <input type="hidden" value="{{this.id}}">
+                  <td><input type="text" value="{{this.time}}"></td>
+                  <td><input type="text" value="{{this.details}}"></td>
+                  <td><input type="text" value="{{this.patient_id}}"></td>
+                  <td>
+                    <button name="submit" value="submit" type="submit" class="btn btn-success">Edit</button>
+                  </td>
+                  <td>
+                    <button name="delete" value="delete" type="submit" class="btn btn-danger"></button>
+                  </td>
+                </form>
+                
+              </tr>
+              {{/each}}
+            </table>
+        <div>
+          <table></table>
         </div>
     </main>
 

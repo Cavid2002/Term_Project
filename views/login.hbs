@@ -32,10 +32,10 @@
     +Mercy Hospital
   </h2>
   
-  <form method="post" enctype="text/plain">
+  <form method="post">
     <div class="form-group my-4">
       
-      <input type="text" name="email" id="email" class="form-control" placeholder="Enter your email">
+      <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email">
 
     </div>
     
@@ -54,7 +54,7 @@
         <button type="submit" class="btn btn-outline-primary btn-block w-100">Login</button>
     </div>
     <div>
-        <p class="text-warning">{{msg}}</p>
+        <p class="text-danger">{{fail}}</p>
     </div>
   </form>
 </div>

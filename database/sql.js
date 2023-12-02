@@ -10,11 +10,17 @@ const db =  mysql.createPool({
 
 const user = {
     checkUser: async (tableName, email) => {
-        let cmd = `Select * from ${tableName} where email = ${email};`;
-        console.log(cmd);
+        let cmd = `SELECT * FROM ${tableName} WHERE email = '${email}';`;
+        console.log("Command Executed:", cmd);
         let [data] = await db.query(cmd);
         return data[0];
     },
+    getDataByID: async (tableName, id) => {
+        let cmd = `SELECT * FROM ${tableName} WHERE id = ${id};`;
+        console.log("Command Executed:", cmd);
+        let [data] = await db.query(cmd);
+        return data[0];
+    }
 }
 
 module.exports.user = user;  

@@ -4,24 +4,25 @@ const router = express.Router();
 
 
 router.get('/', async (req, res) => {
-    return res.render('login', {msg : req.query.msg});
+    return res.render('login', {fail : req.query.fail});
 });
 
 router.post('/', async (req, res) => {
     let formData = req.body;
-    let dbName = "Doctor";
+    console.log(formData);
+    let roleName = "Doctor";
     if(formData.role == "nurse")
     {
-        dbName = "Nurse";  
+        roleName = "Nurse";  
     } 
-    let data = await db.user.checkUser(dbName, formData.email);
+    let data = await db.user.checkUser(roleName, formData.email);
     if(!data || data.password != formData.password)
     {
-        return res.redirect('/?msg=invalid email or password');
+        return res.redirect('/?fail=invalid email or password');
     }
     
-    req.session.userData = {id : data.id, role : "nurse"};
-    return redirect('/main');
+    req.session.userData = {id : data.id, role : roleName};
+    return resredirect(`/main/${roleName.toLowerCase()}`);
 });
 
 
