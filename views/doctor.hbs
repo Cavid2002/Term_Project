@@ -9,6 +9,26 @@
         .navbar-nav li a:hover{
             color: rgb(192, 144, 56) !important;
         }
+      .add-record-form{
+        width: 600px;
+        height: 250px;
+        padding: 20px;
+        box-shadow: 1px 1px 10px;
+        border: 1px solid green;
+        border-radius: 10px;
+        background-color: white;
+        position: sticky;
+        top: 30vh;
+        left: 30vw;
+      }
+      
+      .inactive{
+        display: none;
+      }
+      
+      .active{
+        display: block;
+      }
     </style>
 </head>
     <body>
@@ -25,55 +45,92 @@
         <div class="collapse navbar-collapse  justify-content-end" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link fw-bold" aria-current="page" href="#">Main</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link fw-bold" href="#">Examination</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link fw-bold" href="#">Appointments</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link fw-bold" href="#">Logout</a>
+                <a class="nav-link fw-bold" href="/logout">Logout</a>
               </li>
             </ul>
         </div>
     </div>
     </nav>
     <main class="container py-3">
+        <div class="py-2">
         <h2>Personal Data</h2>
-        <div>
-            <p><span class="fw-bold">Full Name:</span>{{user.full_name}}</p>
-            <p><span class="fw-bold">Department:</span>{{department.name}}</p>
-            <p><span class="fw-bold">Email:</span>{{user.email}}</p>
-            <p><span class="fw-bold">Phone:</span>{{user.phone}}</p>
-            <p><span class="fw-bold">Address:</span>{{user.address}}</p>
+            <p><span class="fw-bold">Full Name:</span> {{user.full_name}}</p>
+            <p><span class="fw-bold">Department:</span> {{department.name}}</p>
+            <p><span class="fw-bold">Email:</span> {{user.email}}</p>
+            <p><span class="fw-bold">Phone:</span> {{user.phone}}</p>
+            <p><span class="fw  -bold">Address:</span> {{user.address}}</p>
         </div>
+        <hr>
+        <div class="py-2">
             <h2>Examination</h2>
-            <table class="table">
+            <p class="text-success fw-bold">{{success}}</p>
+            <p class="text-danger fw-bold">{{failure}}</p>
+            <table class="table table-light">
+              <tr>
+                <th>Examination Time</th>
+                <th>Details</th>
+                <th>Patient Name</th>
+                <th>Patient Ssn</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
               {{#each examination}}
               <tr>
                 <form method="post">
-                  <input type="hidden" value="{{this.id}}">
-                  <td><input type="text" value="{{this.time}}"></td>
-                  <td><input type="text" value="{{this.details}}"></td>
-                  <td><input type="text" value="{{this.patient_id}}"></td>
+                  <input type="hidden" name="id" value="{{this.id}}">
+                  <td><p style="width: 200px; height: 1.5rem; overflow: hidden;">{{this.time}}</p></td>
+                  <td><input class="form-control" name="details" type="text" value="{{this.details}}"></td>
+                  <td>{{this.full_name}}</td>
+                  <td>{{this.ssn}}</td>
+                  <td><a class="btn btn-primary" href="main/patient?ssn={{this.ssn}}">Patient Details</a></td>
                   <td>
-                    <button name="submit" value="submit" type="submit" class="btn btn-success">Edit</button>
+                    <button name="send" value="edit" type="submit" class="btn btn-success">Edit</button>
                   </td>
                   <td>
-                    <button name="delete" value="delete" type="submit" class="btn btn-danger"></button>
+                    <button name="send" value="delete" type="submit" class="btn btn-danger">Delete</button>
                   </td>
                 </form>
                 
               </tr>
               {{/each}}
             </table>
-        <div>
-          <table></table>
-        </div>
+          </div>
+          <div>
+            <button type="button" class="btn btn-primary fw-bold" id="addRecord">+add</button>
+          </div>
     </main>
+    <div style="width: 100vw; min-height: 120vh" class="bg-secondary bg-opacity-25 position-absolute top-0 start-0 inactive" id="addForm">
+      <div class="add-record-form">
+        <form method="post">
+          <div class="p-3">
+            <input type="text" class="form-control" name="ssn" placeholder="Social Security Number">
+          </div>
+          <div class="p-3">
+            <input type="details" class="form-control" name="details" placeholder="Examination Details">
+          </div>
+          <div class="p-3">
+            <button type="submit" class="btn btn-success">Submit Record</button>
+            <button type="button" class="btn btn-danger" id="cancelRecord">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
 
+    </div>
    <script src="/js/bootstrap.js"></script>
+   <script>
+      let addBtn = document.querySelector("#addRecord");
+      let cancelBtn = document.querySelector("#cancelRecord");
+      let form = document.querySelector("#addForm");
+      addBtn.onclick = function () {
+        form.classList.remove("inactive");
+      }
+
+      cancelBtn.onclick = function (){
+        form.classList.add("inactive");
+      }
+      
+   </script>
 </body>
 </html>

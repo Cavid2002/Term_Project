@@ -16,11 +16,15 @@
     }
 
     .login-container {
-      width: 400px;
+      width: 500px;
       padding: 50px;
       box-shadow: 1px 1px 10px;
       border: 1px solid green;
       border-radius: 10px;
+    }
+
+    .inactive{
+      display: none;
     }
 
   </style>
@@ -33,6 +37,15 @@
   </h2>
   
   <form method="post">
+
+    <div class="my-2">
+        <select name="role" id="role" class="form-select">
+          <option id="Doctor" value="Doctor">Doctor</option>
+          <option id="Nurse" value="Nurse">Nurse</option>
+          <option id="Patient" value="Patient">Patient</option>
+        </select>
+    </div>
+
     <div class="form-group my-4">
       
       <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email">
@@ -45,21 +58,40 @@
 
     </div>
 
-    <div class="form-check form-switch my-2">
-        <input class="form-check-input" name="role" value="nurse" type="checkbox">
-        <label class="form-check-label" for="flexSwitchCheckDefault">Nurse</label>
-    </div>
-
     <div>
         <button type="submit" class="btn btn-outline-primary btn-block w-100">Login</button>
     </div>
     <div>
-        <p class="text-danger">{{fail}}</p>
+        <p class="text-danger fw-bold">{{fail}}</p>
+        <p class="text-success fw-bold">{{success}}</p>
+        <p class="inactive" id="link"><a href="/sign-up">Not Our Patient? Become one!</a></p>
     </div>
   </form>
 </div>
 
 
    <script src="/js/bootstrap.js"></script>
+   <script>
+    let nurse = document.querySelector("#Nurse");
+    let doctor = document.querySelector("#Doctor");
+    let patient = document.querySelector("#Patient");
+    let link = document.querySelector("#link");
+    patient.onclick = function() {
+      link.classList.remove("inactive");
+    }
+    nurse.onclick = function() {
+      if(!link.classList.contains("inactive"))
+      {
+        link.classList.add("inactive");
+      }
+    }
+
+    doctor.onclick = function() {
+      if(!link.classList.contains("inactive"))
+      {
+        link.classList.add("inactive");
+      }
+    }
+   </script>
 </body>
 </html>

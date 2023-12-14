@@ -1,8 +1,3 @@
-DELETE FROM Inpatient;
-DELETE FROM Patient;
-DELETE FROM Nurse;
-DELETE FROM Doctor;
-DELETE FROM Department;
 
 INSERT INTO Department (name, email, phone) VALUES
 ('Cardiology', 'cardiology@example.com', '123-456-7890'),
@@ -108,3 +103,26 @@ INSERT INTO Inpatient (room, admission, discharge, patient_id) VALUES
 (505, '2023-05-01', '2023-05-12', 5),
 (606, '2023-06-01', '2023-06-08', 6),
 (707, '2023-07-01', '2023-07-20', 7);
+
+-- Insert 20 Examination records
+INSERT INTO Examination (time, details, doctor_id, patient_id) VALUES
+('2023-01-01 08:00:00', 'Heart checkup', 1, 1),
+('2023-02-01 09:00:00', 'Bone examination', 2, 2),
+('2023-03-01 10:00:00', 'Dermatology check', 3, 3),
+('2023-04-01 11:00:00', 'Neurological exam', 4, 4),
+('2023-05-01 12:00:00', 'Pediatric evaluation', 5, 5),
+('2023-06-01 13:00:00', 'Cardiac stress test', 1, 6),
+('2023-07-01 14:00:00', 'Orthopedic assessment', 2, 7),
+('2023-08-01 15:00:00', 'Dermatology screening', 3, 8),
+('2023-09-01 16:00:00', 'Neurology follow-up', 4, 9),
+('2023-10-01 17:00:00', 'Pediatric checkup', 5, 10),
+('2023-11-01 18:00:00', 'Cardiac echo',  1, 11),
+('2023-12-01 19:00:00', 'Orthopedic consultation', 2, 12),
+('2024-01-01 20:00:00', 'Dermatology biopsy', 3, 13),
+('2024-02-01 21:00:00', 'Neurology MRI', 4, 14),
+('2024-03-01 22:00:00', 'Pediatric vaccination review', 5, 15),
+('2024-04-01 23:00:00', 'Cardiac angiogram', 1, 16),
+('2024-05-01 00:00:00', 'Orthopedic surgery follow-up', 2, 17),
+('2024-06-01 01:00:00', 'Dermatology laser treatment', 3, 18),
+('2024-07-01 02:00:00', 'Neurology EEG', 4, 19),
+('2024-08-01 03:00:00', 'Pediatric allergy testing', 5, 20);

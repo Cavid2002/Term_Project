@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercy Hospital | Doctor</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+    <style>
+        .navbar-nav li a:hover{
+            color: rgb(192, 144, 56) !important;
+        }
+      .add-record-form{
+        width: 600px;
+        height: 250px;
+        padding: 20px;
+        box-shadow: 1px 1px 10px;
+        border: 1px solid green;
+        border-radius: 10px;
+        background-color: white;
+        position: sticky;
+        top: 30vh;
+        left: 30vw;
+      }
+      
+      .inactive{
+        display: none;
+      }
+      
+      .active{
+        display: block;
+      }
+    </style>
+</head>
+    <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+            <div>
+                <a class="navbar-brand fw-bold text-success" href="#">+Mercy Hospital</a>
+            </div>
+            <div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        <div class="collapse navbar-collapse  justify-content-end" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link fw-bold" href="/logout">Logout</a>
+              </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+    <main class="container py-3">
+        <div class="py-2">
+        <h2>Personal Data</h2>
+            <p><span class="fw-bold">Full Name:</span> {{user.full_name}}</p>
+            <p><span class="fw-bold">Department:</span> {{department.name}}</p>
+            <p><span class="fw-bold">Email:</span> {{user.email}}</p>
+            <p><span class="fw-bold">Phone:</span> {{user.phone}}</p>
+            <p><span class="fw-bold">Address:</span> {{user.address}}</p>
+        </div>
+        <hr>
+        <div class="py-2">
+            <h2>Treatment</h2>
+            <p class="text-success fw-bold">{{success}}</p>
+            <p class="text-danger fw-bold">{{failure}}</p>
+            <table class="table table-light">
+              <tr>
+                <th>Treatment Time</th>
+                <th>Details</th>
+                <th>Patient Name</th>
+                <th>Patient Ssn</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+              {{#each treatment}}
+              <tr>
+                <form method="post">
+                  <input type="hidden" name="id" value="{{this.id}}">
+                  <td><p style="width: 200px; height: 1.5rem; overflow: hidden;">{{this.time}}</p></td>
+                  <td><input class="form-control" name="details" type="text" value="{{this.details}}"></td>
+                  <td>{{this.full_name}}</td>
+                  <td>{{this.ssn}}</td>
+                  <td><a class="btn btn-primary" href="main/patient?ssn={{this.ssn}}">Patient Details</a></td>
+                  <td>
+                    <button name="send" value="edit" type="submit" class="btn btn-success">Edit</button>
+                  </td>
+                  <td>
+                    <button name="send" value="delete" type="submit" class="btn btn-danger">Delete</button>
+                  </td>
+                </form>
+                
+              </tr>
+              {{/each}}
+            </table>
+          </div>
+          <div>
+            <button type="button" class="btn btn-primary fw-bold" id="addRecord">+add</button>
+          </div>
+    </main>
+    <div style="width: 100vw; min-height: 120vh" class="bg-secondary bg-opacity-25 position-absolute top-0 start-0 inactive" id="addForm">
+      <div class="add-record-form">
+        <form method="post">
+          <div class="p-3">
+            <input type="text" class="form-control" name="ssn" placeholder="Social Security Number">
+          </div>
+          <div class="p-3">
+            <input type="details" class="form-control" name="details" placeholder="Treatment Details">
+          </div>
+          <div class="p-3">
+            <button type="submit" class="btn btn-success">Submit Record</button>
+            <button type="button" class="btn btn-danger" id="cancelRecord">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    </div>
+   <script src="/js/bootstrap.js"></script>
+   <script>
+      let addBtn = document.querySelector("#addRecord");
+      let cancelBtn = document.querySelector("#cancelRecord");
+      let form = document.querySelector("#addForm");
+      addBtn.onclick = function () {
+        form.classList.remove("inactive");
+      }
+
+      cancelBtn.onclick = function (){
+        form.classList.add("inactive");
+      }
+      
+   </script>
+</body>
+</html>

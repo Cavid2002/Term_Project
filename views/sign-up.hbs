@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercy | Login</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+
+    <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f8f9fa;
+    }
+
+    .login-container {
+      width: 1000px;
+      padding: 40px;
+      box-shadow: 1px 1px 10px;
+      border: 1px solid green;
+      border-radius: 10px;
+    }
+
+    .inactive{
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="login-container">
+  <h2 class="text-center text-success mb-4 fw-bold">
+    <span class="text-danger">+</span>Mercy Hospital
+  </h2>
+  <h4 class="text-center fw-bold">
+    Create new Patient Account
+  </h4>
+  <form method="post">
+    <div class="d-flex justify-content-between">
+        <div class="w-50 px-2">
+          <div class="w-100 py-2">
+            <input type="text" class="form-control w-100" name="full_name" placeholder="Enter your full name:">
+          </div>
+
+           <div class="w-100 py-2">
+            <input type="number" class="form-control w-100" name="phone" placeholder="Enter your phone number:">
+          </div>
+
+
+          <div class="w-100 py-2">
+            <input type="email" class="form-control w-100" name="email" placeholder="Enter your email:">
+          </div>
+
+          <div class="w-100 py-2">
+            <input type="password" class="form-control w-100" name="password" placeholder="Enter your password:">
+          </div>
+
+          <div class="w-100 py-2">
+            <input type="password" class="form-control w-100" name="repassword" placeholder="Renter your password:">
+          </div>
+
+          <div class="w-100 py-2">
+            <button class="btn btn-outline-primary w-100" type="">Create Account</button>
+          </div>
+
+                    
+        </div>
+        <div class="w-50 px-2">
+          <div class="w-100 py-2">
+            <input type="number" class="form-control w-100" name="ssn" placeholder="Enter your social security number:">
+          </div>
+
+          <div class="w-100 py-2">
+               <select name="gender" id="gender" class="form-select">
+                  <option selected disabled>Enter your gender:</option>
+                  <option value="Doctor">Male</option>
+                  <option value="Nurse">Female</option>
+              </select>
+          </div>
+
+           <div class="w-100 py-2">
+               <select name="blood" id="blood" class="form-select">
+                  <option selected disabled>Enter your blood type:</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+              </select>
+          </div>
+
+          <div class="w-100">
+            <label for="height">Enter your height: <span id="heightRes"></span>cm</label>
+            <input type="range" id="height" class="form-range w-100" min="0" max="300" name="height">
+          </div>
+
+          <div class="w-100">
+            <label for="weight">Enter your weight: <span id="weightRes"></span>kg</label>
+            <input type="range" id="weight" class="form-range w-100" min="0" max="150" name="weight">
+          </div>
+
+          <div class="w-100 py-2">
+            <p class="text-danger fw-bold">{{failure  }}</p>
+          </div>
+
+        </div>
+        
+    </div>
+  </form>
+</div>
+    <script src="/js/bootstrap.js"></script>
+    <script>
+      let weight = document.querySelector("#weight");
+      let height = document.querySelector("#height");
+      let weightRes = document.querySelector("#weightRes");
+      let heightRes = document.querySelector("#heightRes");
+      
+      weight.onclick = function() {
+        weightRes.textContent = weight.value;
+      }
+
+      height.onclick = function(){
+        heightRes.textContent = height.value;
+      }
+
+    </script>
+</body>

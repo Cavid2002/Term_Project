@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS Hospital;
+
 CREATE DATABASE Hospital;
 
 USE Hospital;
@@ -90,7 +92,7 @@ CREATE TABLE `Examination` (
 CREATE TABLE `Treatment` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`time` DATETIME NOT NULL,
-	`deatils` TEXT NOT NULL,
+	`details` TEXT NOT NULL,
 	`nurse_id` INT NOT NULL,
 	`patient_id` INT NOT NULL,
 	PRIMARY KEY (`id`)
