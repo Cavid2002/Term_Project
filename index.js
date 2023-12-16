@@ -24,8 +24,10 @@ app.use(
 
 const loginRouter = require('./routes/login');
 const mainRouter = require('./routes/main');
+const adminRouter = require('./routes/admin');
 app.use('/', loginRouter);
 app.use('/main', mainRouter);
+app.use('/admin', adminRouter);
 
 
 app.listen(PORT, () => {

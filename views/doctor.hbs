@@ -11,7 +11,7 @@
         }
       .add-record-form{
         width: 600px;
-        height: 250px;
+        height: 350px;
         padding: 20px;
         box-shadow: 1px 1px 10px;
         border: 1px solid green;
@@ -44,6 +44,9 @@
             </div>
         <div class="collapse navbar-collapse  justify-content-end" id="navbarNavDropdown">
             <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link fw-bold text-info" href="/main/search">Search for Patient</a>
+              </li>
               <li class="nav-item">
                 <a class="nav-link fw-bold" href="/logout">Logout</a>
               </li>
@@ -79,11 +82,11 @@
               <tr>
                 <form method="post">
                   <input type="hidden" name="id" value="{{this.id}}">
-                  <td><p style="width: 200px; height: 1.5rem; overflow: hidden;">{{this.time}}</p></td>
+                  <td><input type="text" id="time" name="time" class="form-control" value="{{this.time}}"></td>
                   <td><input class="form-control" name="details" type="text" value="{{this.details}}"></td>
                   <td>{{this.full_name}}</td>
                   <td>{{this.ssn}}</td>
-                  <td><a class="btn btn-primary" href="main/patient?ssn={{this.ssn}}">Patient Details</a></td>
+                  <td><a class="btn btn-primary" href="view-patient?ssn={{this.ssn}}">Patient Details</a></td>
                   <td>
                     <button name="send" value="edit" type="submit" class="btn btn-success">Edit</button>
                   </td>
@@ -104,10 +107,13 @@
       <div class="add-record-form">
         <form method="post">
           <div class="p-3">
-            <input type="text" class="form-control" name="ssn" placeholder="Social Security Number">
+            <input type="text" name="time" placeholder="Enter the datetime:(yyyy-mm-dd hh:mm:ss)" id="time" class="form-control">
           </div>
           <div class="p-3">
-            <input type="details" class="form-control" name="details" placeholder="Examination Details">
+            <input type="text" class="form-control" name="ssn" placeholder="Social Security Number:">
+          </div>
+          <div class="p-3">
+            <input type="details" class="form-control" name="details" placeholder="Examination Details:">
           </div>
           <div class="p-3">
             <button type="submit" class="btn btn-success">Submit Record</button>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercy | Search</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+            <div>
+                <a class="navbar-brand fw-bold text-success" href="#">+Mercy Hospital</a>
+            </div>
+            <div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        <div class="collapse navbar-collapse  justify-content-end" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link fw-bold" href="/main/{{roleName}}">Back to Main Page</a>
+              </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+    <div class="container py-2">
+        <form method="post">
+        <input class="form-control w-100" type="text" name="search" placeholder="Write filter here: (column_name='value')">
+        <div class="text-danger fw-bold">
+            {{failure}}
+        </div>
+        <br>
+        <button type="submit" class="btn btn-outline-primary">Search</button>
+        </form>
+    </div>
+    <div class="container py-3">
+        <table class="table table-light">
+            <tr>
+                <th>full_name</th>
+                <th>address</th>
+                <th>ssn</th>
+                <th>email</th>
+                <th>gender</th>
+                <th>blood_type</th>
+                <th>height</th>
+                <th>weight</th>
+            </tr>
+            {{#each patient}}
+            <tr>
+                <td>{{this.full_name}}</td>
+                <td>{{this.address}}</td>
+                <td>{{this.ssn}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.gender}}</td>
+                <td>{{this.blood_type}}</td>
+                <td>{{this.height}}</td>
+                <td>{{this.weight}}</td>
+            </tr>
+            {{/each}}
+        </table>
+    </div>
+    <script src="/js/bootstrap.js"></script>
+</body>
+</html>

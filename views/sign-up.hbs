@@ -48,7 +48,10 @@
            <div class="w-100 py-2">
             <input type="number" class="form-control w-100" name="phone" placeholder="Enter your phone number:">
           </div>
-
+          
+            <div class="w-100 py-2">
+              <input type="text" class="form-control w-100" name="address" placeholder="Enter your address:">
+            </div>
 
           <div class="w-100 py-2">
             <input type="email" class="form-control w-100" name="email" placeholder="Enter your email:">
@@ -61,11 +64,6 @@
           <div class="w-100 py-2">
             <input type="password" class="form-control w-100" name="repassword" placeholder="Renter your password:">
           </div>
-
-          <div class="w-100 py-2">
-            <button class="btn btn-outline-primary w-100" type="">Create Account</button>
-          </div>
-
                     
         </div>
         <div class="w-50 px-2">
@@ -76,13 +74,13 @@
           <div class="w-100 py-2">
                <select name="gender" id="gender" class="form-select">
                   <option selected disabled>Enter your gender:</option>
-                  <option value="Doctor">Male</option>
-                  <option value="Nurse">Female</option>
+                  <option value="M">Male</option>
+                  <option value="F">Female</option>
               </select>
           </div>
 
            <div class="w-100 py-2">
-               <select name="blood" id="blood" class="form-select">
+               <select name="blood_type" id="blood_type" class="form-select">
                   <option selected disabled>Enter your blood type:</option>
                   <option value="O+">O+</option>
                   <option value="O-">O-</option>
@@ -105,8 +103,9 @@
             <input type="range" id="weight" class="form-range w-100" min="0" max="150" name="weight">
           </div>
 
-          <div class="w-100 py-2">
-            <p class="text-danger fw-bold">{{failure  }}</p>
+          <div class="w-100 py-1">
+            <button class="btn btn-outline-primary w-100" type="submit">Create Account</button>
+            <p class="text-danger fw-bold">{{failure}}</p>
           </div>
 
         </div>

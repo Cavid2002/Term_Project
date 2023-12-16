@@ -1,1 +1,7 @@
-SELECT Examination.id, Examination.time, Examination.details, Patient.full_name, Patient.ssn FROM Examination INNER JOIN Patient ON Examination.patient_id = Patient.id WHERE doctor_id = 1;
+CREATE INDEX email_index ON Doctor (email);
+
+CREATE INDEX email_index on Nurse (email);
+
+CREATE INDEX ssn_index ON Patient (ssn);
+
+CREATE INDEX email_index ON Patient (email);
